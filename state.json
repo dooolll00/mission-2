@@ -1,0 +1,71 @@
+{
+    "quizzes": [
+        {
+            "id": 1,
+            "question": "파이썬에서 리스트의 맨 끝에 값을 추가할 때 사용하는 메서드는?",
+            "choices": [
+                "append()",
+                "push()",
+                "add()",
+                "insert_last()"
+            ],
+            "answer": 1
+        },
+        {
+            "id": 2,
+            "question": "파이썬에서 한 줄 주석을 작성할 때 사용하는 기호는?",
+            "choices": [
+                "//",
+                "<!-- -->",
+                "#",
+                "/* */"
+            ],
+            "answer": 3
+        },
+        {
+            "id": 3,
+            "question": "딕셔너리에서 키와 값을 함께 반복할 때 사용하는 메서드는?",
+            "choices": [
+                "keys()",
+                "values()",
+                "items()",
+                "pairs()"
+            ],
+            "answer": 3
+        },
+        {
+            "id": 4,
+            "question": "파이썬에서 예외 처리를 시작할 때 사용하는 키워드는?",
+            "choices": [
+                "catch",
+                "try",
+                "except",
+                "error"
+            ],
+            "answer": 2
+        },
+        {
+            "id": 5,
+            "question": "함수에서 값을 돌려줄 때 사용하는 키워드는 무엇일까요?",
+            "choices": [
+                "return",
+                "yield",
+                "print",
+                "break"
+            ],
+            "answer": 1
+        },
+        {
+            "id": 6,
+            "question": "문제를 입력하세요: 파이썬에서 문자열을 나타낼 때 사용하는 기호는?",
+            "choices": [
+                "선택지 1: 따옴표",
+                "선택지 2: 대괄호",
+                "선택지 3: 중괄호",
+                "선택지 4: 슬래시"
+            ],
+            "answer": 1
+        }
+    ],
+    "best_score": 33
+}
