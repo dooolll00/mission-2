@@ -19,3 +19,35 @@ class Quiz:
     def check(self, user_answer):
         """사용자가 입력한 번호가 정답인지 확인한다."""
         return user_answer == self.answer
+
+
+def default_quizzes():
+    """저장 파일이 없을 때 사용하는 기본 파이썬 퀴즈 5개."""
+    return [
+        Quiz(
+            "파이썬에서 리스트의 맨 끝에 값을 추가할 때 사용하는 메서드는?",
+            ["append()", "push()", "add()", "insert_last()"],
+            1,
+        ),
+        Quiz(
+            "파이썬에서 한 줄 주석을 작성할 때 사용하는 기호는?",
+            ["//", "<!-- -->", "#", "/* */"],
+            3,
+        ),
+        Quiz(
+            "딕셔너리에서 키와 값을 함께 반복할 때 사용하는 메서드는?",
+            ["keys()", "values()", "items()", "pairs()"],
+            3,
+        ),
+        Quiz(
+            "파이썬에서 예외 처리를 시작할 때 사용하는 키워드는?",
+            ["catch", "try", "except", "error"],
+            2,
+        ),
+        Quiz(
+            "함수에서 값을 돌려줄 때 사용하는 키워드는 무엇일까요?",
+            ["return", "yield", "print", "break"],
+            1,
+        ),
+    ]
+    

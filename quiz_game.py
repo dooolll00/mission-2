@@ -2,6 +2,8 @@
 
 import os
 
+from quiz import Quiz, default_quizzes
+
 STATE_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "state.json")
 
 
@@ -10,7 +12,7 @@ class QuizGame:
 
     def __init__(self, state_file: str = STATE_FILE):
         self.state_file = state_file
-        self.quizzes = []
+        self.quizzes = default_quizzes()
         self.best_score = None  # 아직 퀴즈를 풀지 않았으면 None
 
     def show_menu(self) -> None:
@@ -75,3 +77,4 @@ class QuizGame:
 
 if __name__ == "__main__":
     QuizGame().run()
+ 
