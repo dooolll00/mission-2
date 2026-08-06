@@ -205,6 +205,17 @@ class QuizGame:
 
         print("-" * 40)
 
+    def show_score(self) -> None:
+        """최고 점수를 출력한다. 아직 퀴즈를 풀지 않았으면 안내한다."""
+        if self.best_score is None:
+            print(
+                "⚠️ 아직 퀴즈를 푼 기록이 없습니다. "
+                "먼저 퀴즈를 풀어보세요!"
+            )
+            return
+
+        print(f"\n🏆 최고 점수: {self.best_score}점")
+
     def save_state(self) -> None:
         """파일 저장 기능은 이후 단계에서 구현한다."""
         pass
@@ -225,7 +236,7 @@ class QuizGame:
             elif choice == 3:
                 self.list_quizzes()
             elif choice == 4:
-                print("🚧 점수 확인 기능은 준비 중입니다.")
+                self.show_score()
             else:
                 print("👋 게임을 종료합니다.")
                 break
