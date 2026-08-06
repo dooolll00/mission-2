@@ -21,6 +21,20 @@ class Quiz:
         """사용자가 입력한 번호가 정답인지 확인한다."""
         return user_answer == self.answer
 
+    @property
+    def options(self):
+        """기존 options 이름을 쓰는 코드와 호환하기 위한 별칭."""
+        return self.choices
+
+    @property
+    def correct_answer(self):
+        """기존 correct_answer 이름을 쓰는 코드와 호환하기 위한 별칭."""
+        return self.answer
+
+    def check_answer(self, user_answer):
+        """기존 check_answer 이름을 쓰는 코드와 호환하기 위한 별칭."""
+        return self.check(user_answer)
+
     def to_dict(self):
         """JSON 저장을 위해 Quiz 객체를 딕셔너리로 변환한다."""
         return {
