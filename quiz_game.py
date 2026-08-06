@@ -75,6 +75,34 @@ class QuizGame:
 
             return value
 
+    def read_text(self, prompt: str) -> str | None:
+        """문자 입력을 검사하고 올바른 문자열을 반환한다."""
+        while True:
+            try:
+                raw = input(prompt).strip()
+            except (KeyboardInterrupt, EOFError):
+                print(
+                    "\n\n⚠️ 입력이 중단되었습니다. "
+                    "현재 데이터를 저장하고 안전하게 종료합니다."
+                )
+                self.save_state()
+                return None
+
+            if not raw:
+                print("⚠️ 빈 입력은 사용할 수 없습니다. 다시 입력하세요.")
+                continue
+
+            try:
+                raw.encode("utf-8")
+            except UnicodeEncodeError:
+                print(
+                    "⚠️ 인식할 수 없는 문자가 포함되어 있습니다. "
+                    "다시 입력하세요."
+                )
+                continue
+
+            return raw
+
     def play_quiz(self) -> None:
         """퀴즈를 랜덤 순서로 출제하고 채점한다."""
         if not self.quizzes:
@@ -122,6 +150,47 @@ class QuizGame:
         self.save_state()
         print("=" * 40)
 
+    def add_quiz(self) -> None:
+        """문제, 선택지 4개, 정답 번호를 입력받아 퀴즈를 추가한다."""
+        print("\n📌 새로운 퀴즈를 추가합니다.")
+
+        question = self.read_text("문제를 입력하세요: ")
+        if question is None:
+            return
+
+        choices = []
+
+        for i in range(1, 5):
+            choice = self.read_text(f"선택지 {i}: ")
+            if choice is None:
+                return
+            choices.append(choice)
+
+        answer = self.read_int("정답 번호 (1-4): ", 1, 4)
+        if answer is None:
+            return
+
+        quiz_id = max(
+            (
+                quiz.quiz_id
+                for quiz in self.quizzes
+                if quiz.quiz_id is not None
+            ),
+            default=0,
+        ) + 1
+
+        new_quiz = Quiz(
+            question,
+            choices,
+            answer,
+            quiz_id=quiz_id,
+        )
+
+        self.quizzes.append(new_quiz)
+        self.save_state()
+
+        print("\n✅ 퀴즈가 추가되었습니다!")
+
     def save_state(self) -> None:
         """파일 저장 기능은 이후 단계에서 구현한다."""
         pass
@@ -138,7 +207,7 @@ class QuizGame:
             if choice == 1:
                 self.play_quiz()
             elif choice == 2:
-                print("🚧 퀴즈 추가 기능은 준비 중입니다.")
+                self.add_quiz()
             elif choice == 3:
                 print("🚧 퀴즈 목록 기능은 준비 중입니다.")
             elif choice == 4:
